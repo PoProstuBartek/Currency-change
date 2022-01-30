@@ -4,19 +4,19 @@ export const convertPLNToUSD = (PLN) => {
     return NaN;
   }
 
-  if (typeof PLN !== 'number' || PLN === null){
+  if (typeof PLN !== 'number'){
     return 'Error';
   }
 
+  if (PLN < 0 ){
+    PLN = 0;
+  }
+  
   const PLNtoUSD = PLN / 3.5;
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
   });
 
-  if (PLN < 0){
-    return PLN = formatter.format(0);
-  } else {
-    return formatter.format(PLNtoUSD);
-  }
+  return formatter.format(PLNtoUSD);
 }
